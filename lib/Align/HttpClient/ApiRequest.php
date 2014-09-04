@@ -20,8 +20,10 @@ class ApiRequest
     session_set_save_handler($this->session , true);
     session_start();
 
-    $accessToken =  $this->session->read('access_token');
-    if(!empty($accessToken))
+    $accessToken      = $this->session->read('access_token');
+    $is_expired_token = $this->isTokenExpired();
+    
+    if( $is_expired_token == false)
     {
       self::$accessToken = $accessToken;
     }
@@ -36,7 +38,7 @@ class ApiRequest
 
   public function all($url)
   {
-    $data = array('access_token' => self::$accessToken);
+    $data     = array('access_token' => self::$accessToken);
     $apiUrl   = Config::$apiUrl . $url;
     $response = $this->curl->get($apiUrl, $data);
     return $response;
@@ -44,7 +46,7 @@ class ApiRequest
 
   public function get($url)
   {
-    $data = array('access_token' => self::$accessToken);
+    $data     = array('access_token' => self::$accessToken);
     $apiUrl   = Config::$apiUrl . $url;
     $response = $this->curl->get($apiUrl, $data);
     return $response;
@@ -53,17 +55,29 @@ class ApiRequest
   public function post($url,$data=array())
   {
     $data['access_token'] = self::$accessToken;
-    $apiUrl   = Config::$apiUrl . $url;
-    $response = $this->curl->post($apiUrl, $data);
+    $apiUrl               = Config::$apiUrl . $url;
+    $response             = $this->curl->post($apiUrl, $data);
     return $response;
   }
 
   public function put($url, $data=array())
   {
     $data['access_token'] = self::$accessToken;
-    $apiUrl   = Config::$apiUrl . $url;
-    $response = $this->curl->put($apiUrl, $data);
+    $apiUrl               = Config::$apiUrl . $url;
+    $response             = $this->curl->put($apiUrl, $data);
     return $response;
+  }
+
+  public function isTokenExpired()
+  {
+    $token_exp_date   = $this->session->read('expires');
+
+    if (strtotime($exp_date) < strtotime(date("Y-m-d H:i:s"))){
+      $this->session->destroy('access_token');
+      $this->session->destroy('expires');
+      return true;
+    }
+    return false;
   }
 
 }
