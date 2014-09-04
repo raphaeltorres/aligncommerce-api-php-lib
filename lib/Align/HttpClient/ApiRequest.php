@@ -70,9 +70,9 @@ class ApiRequest
 
   public function isTokenExpired()
   {
-    $token_exp_date   = $this->session->read('expires');
+    $token_exp_date = $this->session->read('expires');
 
-    if (strtotime($exp_date) < strtotime(date("Y-m-d H:i:s"))){
+    if (strtotime($token_exp_date) < strtotime(date("Y-m-d H:i:s"))){
       $this->session->destroy('access_token');
       $this->session->destroy('expires');
       return true;
