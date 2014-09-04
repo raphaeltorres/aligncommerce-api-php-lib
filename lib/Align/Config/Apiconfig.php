@@ -3,10 +3,10 @@ namespace aligncommerce\lib\Align\Config;
 
 abstract class Apiconfig
 {
-  public static $authBasicUsername  = 'angel@aligncommerce.com'; 
-  public static $authBasicPassword  = 'password123';
-  public static $clientId           = '5d8a919b6022812a0be983bc6cd7c8f8';
-  public static $secretKey          = '5672b505d051580fccfbd74b655a9402';
+  public static $authBasicUsername  = ''; 
+  public static $authBasicPassword  = '';
+  public static $clientId           = '';
+  public static $secretKey          = '';
   public static $apiUrl             =  'http://api.aligncommerce.com/';  
 
   public static function getBasicAuthUsername()
