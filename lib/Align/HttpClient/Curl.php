@@ -214,7 +214,6 @@ class Curl {
                 curl_setopt($this->request, CURLOPT_HTTPGET, true);
                 break;
             case 'POST':
-                curl_setopt($this->request, CURLOPT_FOLLOWLOCATION, true);
                 curl_setopt($this->request, CURLOPT_CUSTOMREQUEST, "POST");
                 curl_setopt($this->request, CURLOPT_POSTREDIR, 3);
                 curl_setopt($this->request, CURLOPT_POST, true);
@@ -237,6 +236,7 @@ class Curl {
      * @access protected
     **/
     protected function set_request_options($url, $vars) {
+        curl_setopt($this->request, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($this->request, CURLOPT_URL, $url);
         if (!empty($vars)) curl_setopt($this->request, CURLOPT_POSTFIELDS, http_build_query($vars));
         
