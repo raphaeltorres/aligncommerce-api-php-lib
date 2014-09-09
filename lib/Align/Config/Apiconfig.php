@@ -11,7 +11,7 @@ abstract class Apiconfig
     public static $authBasicPassword  = '';
     public static $clientId           = '';
     public static $secretKey          = '';
-    public static $apiUrl             = 'http://api.aligncommerce.com/';  
+    public static $apiUrl             = 'https://api.aligncommerce.com/';  
 
     public static function getBasicAuthUsername()
     {
