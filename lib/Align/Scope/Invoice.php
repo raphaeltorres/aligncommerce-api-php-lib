@@ -23,7 +23,7 @@ class Invoice extends Request
 
         if( !is_null($id) )
         {
-            $response = $request->get('invoice/retrieve/' . $id);
+            $response = $request->get('invoice/' . $id);
         }
         else
         {
@@ -42,7 +42,7 @@ class Invoice extends Request
     public static function create($data)
     {
         $request  = new Request();
-        $response = $request->post('invoice/create/',$data);
+        $response = $request->post('invoice/',$data);
         return $response;
     }
 
@@ -56,7 +56,7 @@ class Invoice extends Request
     public static function update($id,$data)
     {
         $request  = new Request();
-        $response = $request->put('invoice/update/'.$id,$data);
+        $response = $request->put('invoice/'.$id,$data);
         return $response;
     }
 

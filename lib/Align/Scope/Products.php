@@ -23,7 +23,7 @@ class Products extends Request
 
         if( !is_null($id) )
         {
-            $response = $request->get('products/retrieve/' . $id);
+            $response = $request->get('products/' . $id);
         }
         else
         {
@@ -42,7 +42,7 @@ class Products extends Request
     public static function create($data)
     {
         $request  = new Request();
-        $response = $request->post('products/create/',$data);
+        $response = $request->post('products/',$data);
         return $response;
     }
 
@@ -56,7 +56,7 @@ class Products extends Request
     public static function update($id,$data)
     {
         $request = new Request();
-        $response = $request->put('products/update/'.$id,$data);
+        $response = $request->put('products/'.$id,$data);
         return $response;
     }
 

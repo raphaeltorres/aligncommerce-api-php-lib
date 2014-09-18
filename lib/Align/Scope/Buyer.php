@@ -24,7 +24,7 @@ class Buyer extends Request
  
 		if( !is_null($id) )
 		{
-			$response = $request->get('buyer/retrieve/' . $id);
+			$response = $request->get('buyer/' . $id);
 		}
 		else
 		{
@@ -43,7 +43,7 @@ class Buyer extends Request
 	public static function create($data)
 	{
 		$request  = new Request();
-		$response = $request->post('buyer/create/',$data);
+		$response = $request->post('buyer/',$data);
 		return $response;
 	}
 
@@ -57,7 +57,7 @@ class Buyer extends Request
 	public static function update($id,$data)
 	{
 		$request  = new Request();
-		$response = $request->put('buyer/update/'.$id,$data);
+		$response = $request->put('buyer/'.$id,$data);
 		return $response;
 	}
 
