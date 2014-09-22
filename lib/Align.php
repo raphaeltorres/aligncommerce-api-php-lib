@@ -1,5 +1,10 @@
 <?php 
 
+//PHP version 5.4 or higher.
+if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+  throw new Exception('The Align Commerce Library requires PHP version 5.4 or higher.');
+}
+
 // Align Commerce needs this extension to run properply.
 if ( !function_exists('curl_init') ) 
 {
